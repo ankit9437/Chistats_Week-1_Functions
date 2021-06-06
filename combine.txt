@@ -1,0 +1,842 @@
+#10. WAF to get variable length argument and caculate the sum of square of those numbers
+
+def eq(l):
+    l1=[]
+    for i in range(len(l)):
+        x=l[i]*l[i]
+        l1.append(x)
+    return l1
+
+l=[]
+l=[int(x) for x in input().split()]
+print(eq(l))
+
+"""Output
+2 3 4
+[4, 9, 16]"""
+"""11. WAF to get two parameters as input 1. variable length argument of integers 2. positional parameter and identify whether second parameter is available in the variable length argument
+"""
+
+def fun(arg1, arg2, arg3=2, arg4=9):
+    print(arg1, arg2, arg3, arg4)
+
+fun(13,2)
+fun(1, 2, 3, 4)
+fun(5, 5, arg4=15)
+fun(arg4=44, arg1=13, arg2=24)
+
+"""Output
+13 2 2 9
+1 2 3 4
+5 5 2 15
+13 24 2 44"""
+
+"""12. Function
+	def fun(arg1, arg2, arg3=4, arg4=8):
+		print(arg1, arg2,arg3,arg4)
+
+What will be the output of the below function calls
+	1. fun(3,2)
+	2. fun(10, 20, 30, 40)
+	3. fun(25, 50, arg4=10)
+	4. fun(arg4=4, arg1=3, arg2=4)
+	5. fun()
+	6. fun(arg3=10, arg4=20, 30, 40)
+	7. fun(4, 5, arg2=6)
+	8. fun(4, ,5 arg3=5, arg5=6)"""
+
+
+def fun(arg1, arg2, arg3=4, arg4=8):
+    print(arg1, arg2, arg3, arg4)
+
+print(fun(3,2))
+print(fun(10, 20, 30, 40))
+print(fun(25, 50, arg4=10))
+print(fun(arg4=4, arg1=3, arg2=4))
+#print(fun())
+#print(fun(arg3=10, arg4=20, 30, 40))
+#print(fun(4, 5, arg2=6))
+#print(fun(4, 5, arg3 = 5, arg5 = 6))
+
+"""Output
+3 2 4 8
+None
+10 20 30 40
+None
+25 50 4 10
+None
+3 4 4 4
+None
+Last 4 statements will have error"""
+
+#13. Short note on function vs module vs library
+
+"""
+Function: Functions are used as shotcuts to do a required operation. They can be either buit in function or user defined functions.
+
+Module: The module is a simple Python file that contains collections of functions and global variables and with having a .py extension file. It is an executable file and to organize all the modules we have the concept called Package in Python.
+
+Library: The library is having a collection of related functionality of codes that allows you to perform many tasks without writing your code. It is a reusable chunk of code that we can use by importing it in our program, we can just use it by importing that library and calling the method of that library with period(.).
+
+"""#14. Short note on global variables
+
+"""Global Variables
+Variables that are created outside of a function (as in all of the examples above) are known as global variables.
+Global variables can be used by everyone, both inside of functions and outside."""#15. Short note on local variables
+
+"""Local variables can only be reached within their scope like inside a function"""#16. WAF to caculate factorial of number using recursion
+
+def fact(a):
+    if(a==1):
+        return 1
+    else:
+        return (a*fact(a-1))
+
+a=int(input())
+print(fact(a))
+
+"""Output
+4
+24"""#17. What is lambda function. SHort not with example
+
+"""A Lambda Function in Python programming is an anonymous function or a function having no name. It is a small and restricted function having no more than one line. Just like a normal function, a Lambda function can have multiple arguments with one expression. ... The lambda keyword.
+eg: adder = lambda x, y: x + y
+print (adder (1, 2))"""#18. Write a lambda function to get square of given numbers
+
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print("Original list of integers:")
+print(nums)
+print("\nSquare every number of the said list:")
+square_nums = list(map(lambda x: x ** 2, nums))
+print(square_nums)
+
+"""Output
+Original list of integers:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+Square every number of the said list:
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]"""#9. Write a lambda function to get sum of two given numbers
+
+a=[12,34]
+add = lambda x: x[0]+x[1]>0
+lis2 = list(filter(add, a))
+print(lis2)
+"""Output
+46"""#2. Write down the skeleton of a function with optionals
+
+"""Skeleton starts with the keyword def (for defining the function)
+Then we give the name of the function.
+Then there comes a bracket/paranthesis. That can be empty or we can pass no. of parameters to it.
+Then on the next line at tab space we start writing the body of the function which has expressions, operations, loops which will execute when we invoke the function in the program.
+There are two different variants for return statement at the end of the function body.
+return statement without an expression: if a function is not intended to produce a result, using the return instruction is not obligatory, it will be executed implicitly at the end of the function.
+return statement without the function will evaluate the expression's value and will return it as the function's result"""
+#20. Write a lambda function to get max of given values
+import sys
+
+myList = [1,2,3,10,4,5,6,7,8,9]
+
+def maxVal(list_a, compare_function):
+    max = -sys.maxsize - 1
+    for i in list_a:
+        if compare_function(i, max):
+            max = i
+    return max
+
+my_compare_function = lambda x,y: max(x, y)
+
+print(maxVal(myList, my_compare_function))
+
+"""Output
+9
+"""
+#21. WAP to filter even numbers from list by using filter() function
+
+lis1 = [1, 2, 3, 4, 5]
+
+is_even = lambda x: x % 2 == 0
+lis2 = list(filter(is_even, lis1))
+print(lis2)
+
+"""Output
+[2, 4]"""#22. WAP to filter students whoes name starts with "a" by using filter() function
+
+lis1 = ['ankt','ashu','sarthak','kunal']
+
+is_a = lambda x: x[0] == 'a'
+lis2 = list(filter(is_a, lis1))
+print(lis2)
+
+"""Output
+['ankt', 'ashu']
+""""""23. WAP to get list of integers as input and generate another list containing the square of all integers from list one. Write using lambda function and also without using lambda function"""
+
+nums = [1, 2, 3, 4, 5]
+print("Original list of integers:")
+print(nums)
+print("\nSquare every number of the said list:")
+square_nums = list(map(lambda x: x ** 2, nums))
+print(square_nums)
+
+"""Output
+Original list of integers:
+[1, 2, 3, 4, 5]
+
+Square every number of the said list:
+[1, 4, 9, 16, 25]"""#24. WAP to calculate the sum of al numbers present in the list using reduce()
+
+import functools
+
+lis = [1, 3, 5, 6, 2, ]
+print("The sum of the list elements is : ", end="")
+print(functools.reduce(lambda a, b: a + b, lis))
+
+"""Output
+The sum of the list elements is : 17"""#25. Prove that everything in python is an object
+
+"""Everything in Python is an object, and almost everything has attributes and methods. All functions have a built-in attribute __doc__, which returns the doc string defined in the function's source code. The sys module is an object which has (among other things) an attribute called path
+"""#26. Create the alias of the function defined in the Que 12, print the id of both functions and perform the same set of operations
+
+def fun(arg1, arg2, arg3=4, arg4=8):
+    print(arg1, arg2, arg3, arg4)
+
+print(fun(3,2))
+print(fun(10, 20, 30, 40))
+print(fun(25, 50, arg4=10))
+print(fun(arg4=4, arg1=3, arg2=4))
+
+"""Output
+3 2 4 8
+None
+10 20 30 40
+None
+25 50 4 10
+None
+3 4 4 4
+None"""
+"""27. Nested function: Create a function which takes the list of numbers as parameter, calculates the square of every number in the nexted function and returns the final list of squares.
+"""
+
+def fun(l):
+    def ret(l1):
+        return l1
+    l1=[]
+    for i in l:
+        l1.append(i*i)
+    print(ret(l1))
+
+
+l=[2,3,4,5]
+fun(l)
+
+"""Output
+[4, 9, 16, 25]"""#28. What is the main() function in Python
+
+"""Python Main Function is the beginning of any Python program. When we run a program, the interpreter runs the code sequentially and will not run the main function if imported as a module, but the Main Function gets executed only when it is run as a Python program.
+""""""29. What is __name__ in Python, what are the ways to execute python file differently in different contexts. Ref. https://www.programiz.com/python-programming/main-function
+"""
+
+"""The __name__ variable is a special builtin Python variable that shows the name of the current module.
+It has different values depending on where we execute the Python file.
+ 1.Running Python File as a Script
+ We can run file as script by saving with .py extension.
+ 2.Running Python file as a Module
+ We can also run a Python file as a module. For this, we have to import this file into another Python program.
+ 3.Using if conditional with __name__
+  if conditional clause to run the same Python file differently in different contexts."""#3. WAF to print "Hello World"
+
+def hell():
+    print("Hello World")
+
+hell()
+
+"""Output
+Hello World""""""30. What will be the output of below
+	1. abs(-7.25)
+	2. abs(3+5j)
+	3. abs(3 - 4j)
+	4. round(5.76543, 2)
+	5. round(5.76543)
+	6. round(-1.2)
+	7. arr = [-0.341111, 1.455098989, 4.232323, -0.3432326, 7.626632, 5.122323]"""
+
+arr = [-0.341111, 1.455098989, 4.232323, -0.3432326, 7.626632, 5.122323]
+print(abs(-7.25))
+print(abs(3+5j))
+print(abs(3 - 4j))
+print(round(5.76543, 2))
+print(round(5.76543))
+print(round(5.76543))
+print(round(-1.2))
+#print(round(arr,2))
+"""Output
+7.25
+5.830951894845301
+5.0
+5.77
+6
+6
+-1""""""31. Print values of all below
+	round_num = 15.456
+	final_val = round(round_num, 2)
+	val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_CEILING)
+	val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_DOWN)
+	val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_FLOOR)
+	val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_HALF_DOWN)
+	val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_HALF_EVEN)
+	val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_HALF_UP)
+	val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_UP)"""
+import decimal
+round_num = 15.456
+final_val = round(round_num, 2)
+val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_CEILING)
+print(val1)
+val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_DOWN)
+print(val1)
+val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_FLOOR)
+print(val1)
+val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_HALF_DOWN)
+print(val1)
+val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_HALF_EVEN)
+print(val1)
+val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_HALF_UP)
+print(val1)
+val1=decimal.Decimal(round_num).quantize(decimal.Decimal('0.00'), rounding=decimal.ROUND_UP)
+print(val1)
+
+"""Output
+15.46
+15.45
+15.45
+15.46
+15.46
+15.46
+15.46"""#32. WAP to create a sequence of numbers from 3 to 5 using range()
+
+for i in range(3,6):
+    print(i)
+
+"""Output
+3
+4
+5"""
+#33. WAP to create a sequence of numbers from 3 to 19, but increment by 2 instead of 1
+for i in range(3,20,2):
+    print(i)
+
+"""Output
+3
+5
+7
+9
+11
+13
+15
+17
+19"""#34. WAP to create a list of even number between the given numbers using range()
+
+a=12
+b=17
+for i in range(a,b+1):
+    if(i%2==0):
+        print(i)
+
+"""Output
+12
+14
+16
+"""#35. What will be the output of range(2, -14, -2)
+
+for i in range(2,-14,-2):
+    print(i)
+
+"""Output
+2
+0
+-2
+-4
+-6
+-8
+-10
+-12
+
+"""#36. Identify the time taken by Que 7 and Que 16 to excute using timeit
+import timeit
+import time
+starttime = timeit.default_timer()
+def fact(a):
+    if(a==1):
+        return 1
+    else:
+        return (a*fact(a-1))
+
+a=6
+print(fact(a))
+
+#print (timeit.timeit(setup = '',stmt = fact(6),number = 6))
+print("The time difference is :", timeit.default_timer() - starttime)
+
+"""Output
+720
+The time difference is : 2.669999999999756e-05"""#37. Short note on return vs yield with example
+
+"""Yield is generally used to convert a regular Python function into a generator. Return is generally used for the
+end of the execution and “returns” the result to the caller statement. Yield statement function is executed from
+the last state from where the function get paused.
+
+example
+def simpleGeneratorFun():
+    yield 1
+for value in simpleGeneratorFun():
+    print(value)
+
+    
+def simpleGeneratorFun():
+    return 1
+for value in simpleGeneratorFun():
+    print(value)    """#38. WAP to get all square numbers from 1 to 100 using yield. Ex. 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
+
+def nextSquare():
+    i = 1;
+    while True:
+        yield i * i
+        i += 1
+for num in nextSquare():
+    if num > 100:
+        break
+    print(num)
+
+"""Output
+1
+4
+9
+16
+25
+36
+49
+64
+81
+100"""#39. WAP to create digital clock usinf time.sleep. Clock should print the output in hh:mm:ss AM/PM format
+
+
+import time
+
+print("Printed immediately.")
+hh=0
+mm=0
+
+for i in range(60):
+    time.sleep(1)
+    ss=i
+    print("Time is ",hh,mm,ss)
+
+"""Output
+Printed immediately.
+Time is  0 0 0
+Time is  0 0 1
+Time is  0 0 2
+Time is  0 0 3
+Time is  0 0 4
+Time is  0 0 5"""
+#4. WAF which takes name as parameter and prints it
+
+def name(nam):
+    print(nam)
+
+s=input()
+name(s)
+
+"""Output
+Ankit
+Ankit"""#40. WAP to print the number from list with pause of 5 seconds
+
+import time
+l=[12,23,45,67,78]
+for i in l:
+    print(i)
+    time.sleep(5)
+
+"""Output
+12
+23
+45
+67
+78"""
+#41. WAP to create the queue using collections.dequeue and perform all the queue operations like append, popleft
+
+from collections import deque
+
+# Declaring deque
+queue = deque([1,2,3,4])
+print(queue)
+queue.append(8)
+print("Appended queuq",queue)
+print("\nElements dequeued from the queue")
+print(queue.popleft())
+
+import collections
+de = collections.deque([1, 2, 3])
+print(de)
+de.append(4)
+print("The deque after appending at right is : ")
+print(de)
+de.popleft()
+print("The deque after deleting from left is : ")
+print(de)
+
+queue.pop()
+print(queue)
+queue.popleft()
+print(queue)
+print(queue.count(2))
+queue.appendleft(295)
+print(queue)
+queue.extend([10,210,700])
+print(queue)
+queue.reverse()
+print(queue)
+queue.extendleft([200,340])
+print(queue)
+
+"""Output
+deque([1, 2, 3, 4])
+Appended queuq deque([1, 2, 3, 4, 8])
+
+Elements dequeued from the queue
+1
+deque([1, 2, 3])
+The deque after appending at right is : 
+deque([1, 2, 3, 4])
+The deque after deleting from left is : 
+deque([2, 3, 4])
+deque([2, 3, 4])
+deque([3, 4])
+0
+deque([295, 3, 4])
+deque([295, 3, 4, 10, 210, 700])
+deque([700, 210, 10, 4, 3, 295])
+deque([340, 200, 700, 210, 10, 4, 3, 295])""""""42. WAP to create queue using using queue.Queue andperform below operations on it
+	1. maxsize
+	2. empty()
+	3. full()
+	4. get()
+	5. get_nowait()
+	6. put(item)
+	7. put_nowait(item)
+	8. qsize()"""
+
+from queue import Queue
+q = Queue(maxsize=3)
+print(q.qsize())
+q.put('a')
+q.put('b')
+q.put('c')
+print("\nFull: ", q.full())
+print("\nElements dequeued from the queue")
+print(q.get())
+print(q.get())
+print(q.get())
+print("\nEmpty: ", q.empty())
+
+q.put(1)
+print("\nEmpty: ", q.empty())
+print("Full: ", q.full())
+print(q.put_nowait(2))
+print(q.maxsize)
+print(q.full())
+"""Output
+0
+
+Full:  True
+
+Elements dequeued from the queue
+a
+b
+c
+
+Empty:  True
+
+Empty:  False
+Full:  False
+None
+3
+False"""#43. What is Python Counter and why to use it
+
+"""A Counter is a subclass of dict. Therefore it is an unordered collection where elements and their respective count are stored as a dictionary."""
+from collections import Counter
+
+# With sequence of items
+print(Counter(['B', 'B', 'A', 'B', 'C', 'A', 'B', 'B', 'A', 'C']))
+
+"""Output
+Counter({'B': 5, 'A': 3, 'C': 2})""""""44. Using Counter: WAP to get the count of number of occurences of alphabet present in the list1 = ['x','y','z','x','x','x','y', 'z'] hint : from collections import Counter
+"""
+from collections import Counter
+
+# With sequence of items
+print(Counter(['x','y','z','x','x','x','y', 'z']))
+
+"""Output
+Counter({'x': 4, 'y': 2, 'z': 2})""""""45. What will be the output of below
+
+	1. 	my_str = "Welcome to python world!"
+		Counter(my_str)
+
+	2. 	dict1 =  {'x': 4, 'y': 2, 'z': 2, 'z': 2}
+		Counter(dict1)
+
+	3.  tuple1 = ('x','y','z','x','x','x','y','z')
+		Counter(tuple1)"""
+
+from collections import Counter
+my_str = "Welcome to python world!"
+print(Counter(my_str))
+dict1 =  {'x': 4, 'y': 2, 'z': 2, 'z': 2}
+print(Counter(dict1))
+tuple1 = ('x','y','z','x','x','x','y','z')
+print(Counter(tuple1))
+
+"""Output
+Counter({'o': 4, ' ': 3, 'e': 2, 'l': 2, 't': 2, 'W': 1, 'c': 1, 'm': 1, 'p': 1, 'y': 1, 'h': 1, 'n': 1, 'w': 1, 'r': 1, 'd': 1, '!': 1})
+Counter({'x': 4, 'y': 2, 'z': 2})
+Counter({'x': 4, 'y': 2, 'z': 2})""""""46. Update the value of the counter
+		_count = Counter()
+		_count.update('Welcome to python world!')
+		print(_count)"""
+
+from collections import Counter
+_count = Counter()
+_count.update('Welcome to python world!')
+print(_count)
+
+"""Output
+Counter({'o': 4, ' ': 3, 'e': 2, 'l': 2, 't': 2, 'W': 1, 'c': 1, 'm': 1, 'p': 1, 'y': 1, 'h': 1, 'n': 1, 'w': 1, 'r': 1, 'd': 1, '!': 1})
+"""#48. WAP to delete element from counter generated in Que 43
+
+from collections import Counter
+ignore = ['the','a','if','in','it','of','or']
+LIST=['the','war','Chistats','war']
+ArtofWarCounter = Counter(LIST)
+print(ArtofWarCounter)
+for word in list(ArtofWarCounter):
+    if word in ignore:
+        del ArtofWarCounter[word]
+print(ArtofWarCounter)
+
+"""Output
+Counter({'war': 2, 'the': 1, 'Chistats': 1})
+Counter({'war': 2, 'Chistats': 1})"""#47. WAP to print the counter generated in Que 43 sequentially
+
+from collections import Counter
+l = [1,2,1,2,2,3,4,6,4,5,6,2,4,5,1,2]
+c = Counter(l)
+print(c)
+
+"""Output
+Counter({2: 5, 1: 3, 4: 3, 6: 2, 5: 2, 3: 1})""""""49. SUppoer we have two counter mentioned below
+counter1 =  Counter({'x': 4, 'y': 2, 'z': -2})
+counter2 = Counter({'x1': -12, 'y': 5, 'z':4 })
+Perform below operations on the conters
+	1. Addiotion
+	2. Subtraction
+	3. Intersection
+	4. Union"""
+
+from collections import Counter
+
+c1 = Counter(a=2, b=0, c=-1)
+c2 = Counter(a=1, b=-1, c=2)
+
+c = c1 + c2
+print(c)
+
+c = c1 - c2
+print(c)
+
+c = c1 & c2
+print(c)
+
+c = c1 | c2
+print(c)
+
+"""Output
+Counter({'a': 3, 'c': 1})
+Counter({'a': 1, 'b': 1})
+Counter({'a': 1})
+Counter({'a': 2, 'c': 2})"""#5. WAF which takes number as parameter and prints the square of it
+
+def sqre(a):
+    print(a*a)
+
+a=int(input())
+sqre(a)
+"""Output
+5
+25"""#50. WAP to get the most common elements from the counter
+
+from collections import Counter
+def most_frequent(List):
+    occurence_count = Counter(List)
+    return occurence_count.most_common(1)[0][0]
+
+
+List = [2, 1, 2, 2, 1, 3]
+print(most_frequent(List))
+
+"""Output
+2"""#51. WAP to get all elements with positive value and count>0 from counter
+
+l=[2,4,-5,8,-10,5,-8]
+for i in range(len(l)):
+    if(l[i]>0):
+        print(l[i])
+
+"""Output
+2
+4
+8
+5"""#52. WAP to get count of specific element from counter
+
+from collections import Counter
+a_list = ["a", "b", "a",'f','a','b']
+occurrences = Counter(a_list)
+print(occurrences)
+print(occurrences["a"])
+
+"""Output
+Counter({'a': 3, 'b': 2, 'f': 1})
+3"""2021-05-20 11:45:41,365 Harmless debug Message
+2021-05-20 11:45:41,366 Just an information
+2021-05-20 11:45:41,366 Its a Warning
+2021-05-20 11:45:41,366 Did you try to divide by zero
+2021-05-20 11:45:41,366 Internet is down
+"""54. Iterate on the below using enumerate() function
+	my_list = ["eat","sleep","repeat"]
+	my_str = "chistats"
+	my_tuple = ("A", "B", "C", "D", "E")
+	my_dict = {"a": "PHP", "b":"JAVA", "c":"PYTHON", "d":"NODEJS"}
+	Explain the output of the enumerator"""
+
+my_list = ["eat","sleep","repeat"]
+my_str = "chistats"
+my_tuple = ("A", "B", "C", "D", "E")
+my_dict = {"a": "PHP", "b":"JAVA", "c":"PYTHON", "d":"NODEJS"}
+
+print (list(enumerate(my_list)))
+print (list(enumerate(my_str)))
+print(tuple(enumerate(my_tuple)))
+print(dict(enumerate(my_dict)))
+
+"""Output
+[(0, 'eat'), (1, 'sleep'), (2, 'repeat')]
+[(0, 'c'), (1, 'h'), (2, 'i'), (3, 's'), (4, 't'), (5, 'a'), (6, 't'), (7, 's')]
+((0, 'A'), (1, 'B'), (2, 'C'), (3, 'D'), (4, 'E'))
+{0: 'a', 1: 'b', 2: 'c', 3: 'd'}
+
+enumerate returns the position of each element. So we can return it in the form of list, tuple or dictionary
+"""#6. WAF which takes two number as parameter, calculates the sum of square of the parameters and returns it
+
+def sq(a,b):
+    return((a*a)+(b*b))
+
+a=int(input())
+b=int(input())
+print(sq(a,b))
+
+"""Output
+2
+3
+13"""#7. WAF to find factorial of given number
+def fact(a):
+    if(a==1):
+        return 1
+    else:
+        return (a*fact(a-1))
+
+a=int(input())
+print(fact(a))
+
+"""Output
+4
+24"""#. WAF which takes two paramaters, camculates the sum and product of them and returns.
+def sq(a,b):
+    return((a*b),(a+b))
+
+a=int(input())
+b=int(input())
+print(sq(a,b))
+
+"""Output
+2
+3
+(6, 5)"""#9. List down the types of arguments and explain those in with example.
+
+"""
+1.default arguments:
+default arguments are values that are provided while defining functions.
+The assignment operator = is used to assign a default value to the argument.
+eg: def add(a,b=5,c=10):
+    return (a+b+c)
+
+2.Keyword Arguments:
+Functions can also be called using keyword arguments of the form kwarg=value.all the keyword arguments should match the parameters in the function definition.
+eg: def add(a,b=5,c=10):
+    return (a+b+c)
+
+3. Positional Arguments
+During function call, values passed through arguments should be in the order of parameters in the function definition. This is called positional arguments.
+eg: def add(a,b,c):
+    return (a+b+c)
+
+4.  arbitrary positional arguments:
+For arbitrary positional argument, an asterisk (*) is placed before a parameter in function definition which can hold non-keyword variable-length arguments. These arguments will be wrapped up in a tuple
+eg: def add(*b):
+
+5.arbitrary keyword arguments:
+For arbitrary positional argument, a double asterisk (**) is placed before a parameter in function which can hold keyword variable-length arguments.
+eg: def fn(**a):
+"""#1. List down as much as possible buildin functions of python
+
+return """1. abs()
+The abs() returns the absolute value of a number.
+
+2.2. all()
+The all() function takes a container as an argument. This Built in Functions returns True if all values in a
+python iterable have a Boolean value of True.
+
+3. any()
+Like all(), it takes one argument and returns True if, even one value in the iterable has a Boolean value of True.
+
+4.  ascii()
+It is important Python built-in functions, returns a printable representation of a python object.
+5. bin()
+bin() converts an integer to a binary string. We have seen this and other functions in our article on Python Numbers.
+6. bool()
+bool() converts a value to Boolean.
+7. bytearray()
+bytearray() returns a python array of a given byte size.
+8. bytes()
+bytes() returns an immutable bytes object.
+9. callable()
+callable() tells us if an object can be called.
+10. chr()
+chr() Built In function returns the character in python for an ASCII value.
+11. classmethod()
+classmethod() returns a class method for a given method.
+12. compile()
+compile() returns a Python code object. We use Python in built function to convert a string code into object code.
+13. complex()
+complex() function creates a complex number. We have seen this is our article on Python Numbers.
+14. delattr()
+delattr() takes two arguments- a class, and an attribute in it. It deletes the attribute.
+15. dict()
+dict(), as we have seen it, creates a python dictionary.
+16. dir()
+dir() returns an object’s attributes.
+17. divmod()
+divmod() in Python built-in functions, takes two parameters, and returns a tuple of their quotient and remainder.
+18. enumerate()
+This Python Built In function returns an enumerate object. In other words, it adds a counter to the iterable.
+19. eval()
+This Function takes a string as an argument, which is parsed as an expression."""
+
